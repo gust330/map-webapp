@@ -73,7 +73,7 @@ export function TextCapture() {
                     onChange={(e) => setContent(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Escreve a tua ideia, pensamento ou tarefa…"
-                    className="min-h-[120px] resize-none border-border/40 bg-[#1a1a1a] text-[#f5f5f5] placeholder:text-[#a1a1aa]/60 focus:border-[#7c3aed]/50 focus:ring-[#7c3aed]/20 text-base leading-relaxed transition-all"
+                    className="min-h-[140px] resize-none glass-input rounded-xl text-foreground placeholder:text-muted-foreground/60 text-base leading-relaxed p-4"
                     disabled={isLoading}
                 />
             </div>
@@ -93,7 +93,7 @@ export function TextCapture() {
                 <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit}
-                    className="gap-2 bg-[#7c3aed] text-white hover:bg-[#6d28d9] disabled:opacity-40 transition-all"
+                    className="relative overflow-hidden gap-2 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 disabled:opacity-40 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] rounded-full px-6"
                 >
                     {isLoading ? (
                         <Loader2 className="size-4 animate-spin" />

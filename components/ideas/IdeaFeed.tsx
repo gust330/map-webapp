@@ -20,14 +20,14 @@ export function IdeaFeed({ ideas, loading = false }: IdeaFeedProps) {
                 {Array.from({ length: 3 }).map((_, i) => (
                     <div
                         key={i}
-                        className="rounded-xl border border-border/30 bg-[#1a1a1a]/80 p-5 space-y-3"
+                        className="rounded-2xl glass-card p-5 space-y-4"
                     >
-                        <Skeleton className="h-4 w-full bg-[#242424]" />
-                        <Skeleton className="h-4 w-3/4 bg-[#242424]" />
-                        <Skeleton className="h-4 w-1/2 bg-[#242424]" />
-                        <div className="flex gap-2 pt-2">
-                            <Skeleton className="h-5 w-16 rounded-full bg-[#242424]" />
-                            <Skeleton className="h-5 w-12 rounded-full bg-[#242424]" />
+                        <Skeleton className="h-4 w-full bg-muted/60" />
+                        <Skeleton className="h-4 w-3/4 bg-muted/60" />
+                        <Skeleton className="h-4 w-1/2 bg-muted/60" />
+                        <div className="flex gap-2 pt-3 border-t border-border/30">
+                            <Skeleton className="h-5 w-16 rounded-full bg-muted/60" />
+                            <Skeleton className="h-5 w-12 rounded-full bg-muted/60" />
                         </div>
                     </div>
                 ))}
@@ -39,21 +39,21 @@ export function IdeaFeed({ ideas, loading = false }: IdeaFeedProps) {
     if (ideas.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center gap-6 py-20">
-                <div className="flex size-20 items-center justify-center rounded-2xl bg-[#7c3aed]/10">
-                    <Lightbulb className="size-10 text-[#7c3aed]" />
+                <div className="relative flex size-24 items-center justify-center rounded-3xl bg-primary/10 shadow-[0_0_40px_rgba(124,58,237,0.15)] ring-1 ring-primary/20 group">
+                    <div className="absolute inset-0 rounded-3xl animate-pulse bg-primary/20 blur-xl" />
+                    <Lightbulb className="size-12 text-primary relative z-10 animate-in zoom-in duration-700 fade-in drop-shadow-[0_0_15px_rgba(124,58,237,0.6)]" />
                 </div>
-                <div className="text-center space-y-2">
-                    <h3 className="text-lg font-semibold text-[#f5f5f5]">
+                <div className="text-center space-y-2 max-w-sm">
+                    <h3 className="text-xl font-heading font-semibold text-foreground text-glow text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                         A tua mente está vazia — por agora
                     </h3>
-                    <p className="max-w-sm text-sm text-[#a1a1aa]">
-                        Captura a tua primeira ideia e começa a construir o teu segundo
-                        cérebro.
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                        Captura a tua primeira ideia e começa a construir o teu segundo cérebro inteligente.
                     </p>
                 </div>
                 <Link href="/capture">
-                    <Button className="gap-2 bg-[#7c3aed] text-white hover:bg-[#6d28d9]">
-                        <Plus className="size-4" />
+                    <Button className="mt-4 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] rounded-full px-6 py-5 transition-all duration-300">
+                        <Plus className="size-5" />
                         Capturar primeira ideia
                     </Button>
                 </Link>

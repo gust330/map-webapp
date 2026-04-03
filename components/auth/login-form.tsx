@@ -66,12 +66,12 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md border-border/80 bg-card/80 shadow-lg">
+    <Card className="w-full max-w-md border-border/50 glass-card shadow-[0_0_40px_rgba(124,58,237,0.1)] relative z-10">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-semibold tracking-tight">
+        <CardTitle className="text-3xl font-heading font-semibold tracking-tight text-glow text-center mb-1">
           Entrar
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-center text-muted-foreground/80">
           Email e palavra-passe ou continua com Google.
         </CardDescription>
       </CardHeader>
@@ -87,6 +87,7 @@ export function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@email.com"
+              className="glass-input transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -98,6 +99,7 @@ export function LoginForm() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="glass-input transition-all"
             />
           </div>
           {error ? (
@@ -105,7 +107,7 @@ export function LoginForm() {
               {error}
             </p>
           ) : null}
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] transition-all duration-300" disabled={loading}>
             {loading ? "A entrar…" : "Entrar"}
           </Button>
         </form>
@@ -120,7 +122,7 @@ export function LoginForm() {
         <Button
           type="button"
           variant="outline"
-          className="w-full"
+          className="w-full bg-card/40 border-border/50 hover:bg-white/5 transition-all duration-300"
           disabled={loading}
           onClick={handleGoogleLogin}
         >

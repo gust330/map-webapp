@@ -27,17 +27,17 @@ const inputMethodLabels: Record<string, { label: string; icon: typeof Type }> = 
 
 // Cores das categorias
 const categoryColors: Record<string, string> = {
-    Projetos: "bg-blue-500/15 text-blue-400 border-blue-500/20",
-    Aprendizagem: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
-    Saúde: "bg-rose-500/15 text-rose-400 border-rose-500/20",
-    Finanças: "bg-amber-500/15 text-amber-400 border-amber-500/20",
-    Criatividade: "bg-violet-500/15 text-violet-400 border-violet-500/20",
-    Pessoal: "bg-cyan-500/15 text-cyan-400 border-cyan-500/20",
-    Trabalho: "bg-orange-500/15 text-orange-400 border-orange-500/20",
+    Projetos: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    Aprendizagem: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    Saúde: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+    Finanças: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    Criatividade: "bg-violet-500/10 text-violet-400 border-violet-500/20",
+    Pessoal: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    Trabalho: "bg-orange-500/10 text-orange-400 border-orange-500/20",
 };
 
 const defaultCategoryColor =
-    "bg-[#7c3aed]/15 text-[#c4b5fd] border-[#7c3aed]/20";
+    "bg-primary/10 text-primary border-primary/20";
 
 export function IdeaDetailView({ idea }: { idea: Idea }) {
     const router = useRouter();
@@ -87,29 +87,29 @@ export function IdeaDetailView({ idea }: { idea: Idea }) {
             {/* Voltar */}
             <Link
                 href="/mind"
-                className="inline-flex items-center gap-1.5 text-sm text-[#a1a1aa] hover:text-[#f5f5f5] transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
             >
-                <ArrowLeft className="size-4" />
+                <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
                 Voltar ao feed
             </Link>
 
             {/* Card principal */}
-            <div className="rounded-2xl border border-border/30 bg-[#1a1a1a]/80 p-6 shadow-xl shadow-[#7c3aed]/5 backdrop-blur-xl">
+            <div className="relative rounded-2xl glass-card p-8">
                 {/* Meta info */}
-                <div className="mb-4 flex items-center gap-3 text-xs text-[#a1a1aa]/60">
+                <div className="mb-6 flex items-center gap-4 text-xs text-muted-foreground/80 font-medium border-b border-border/30 pb-4">
                     <span className="flex items-center gap-1.5">
-                        <Clock className="size-3" />
+                        <Clock className="size-3.5 text-primary/70" />
                         {createdAt}
                     </span>
                     <span className="flex items-center gap-1.5">
-                        <MethodIcon className="size-3" />
+                        <MethodIcon className="size-3.5 text-primary/70" />
                         {method.label}
                     </span>
                 </div>
 
                 {/* Conteúdo */}
                 <div className="prose prose-invert max-w-none">
-                    <p className="text-[#f5f5f5] text-base leading-relaxed whitespace-pre-wrap">
+                    <p className="text-foreground text-lg leading-relaxed whitespace-pre-wrap">
                         {idea.content}
                     </p>
                 </div>
@@ -130,7 +130,7 @@ export function IdeaDetailView({ idea }: { idea: Idea }) {
                             <Badge
                                 key={tag}
                                 variant="outline"
-                                className="border-border/30 bg-[#242424] text-xs text-[#a1a1aa]"
+                                className="border-border/30 bg-muted/50 text-xs text-muted-foreground backdrop-blur-sm"
                             >
                                 #{tag}
                             </Badge>
@@ -163,7 +163,7 @@ export function IdeaDetailView({ idea }: { idea: Idea }) {
                     size="sm"
                     onClick={handleArchive}
                     disabled={archiving || isPending}
-                    className="gap-2 border-border/40 bg-transparent text-[#a1a1aa] hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/30"
+                    className="gap-2 border-border/40 bg-card/40 text-muted-foreground hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/30 transition-all rounded-lg"
                 >
                     {archiving ? (
                         <Loader2 className="size-4 animate-spin" />
@@ -177,7 +177,7 @@ export function IdeaDetailView({ idea }: { idea: Idea }) {
                     size="sm"
                     onClick={handleDelete}
                     disabled={deleting || isPending}
-                    className="gap-2 border-border/40 bg-transparent text-[#a1a1aa] hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30"
+                    className="gap-2 border-border/40 bg-card/40 text-muted-foreground hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30 transition-all rounded-lg"
                 >
                     {deleting ? (
                         <Loader2 className="size-4 animate-spin" />

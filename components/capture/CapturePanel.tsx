@@ -6,14 +6,17 @@ import { Type, Mic, ImageIcon } from "lucide-react";
 
 export function CapturePanel() {
     return (
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-2xl relative">
+            {/* Ambient background glow */}
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 blur-2xl opacity-50" />
+            
             {/* Glassmorphism card */}
-            <div className="rounded-2xl border border-border/30 bg-[#1a1a1a]/80 p-6 shadow-2xl shadow-[#7c3aed]/5 backdrop-blur-xl">
+            <div className="relative rounded-2xl glass-card p-6">
                 <Tabs defaultValue="text" className="space-y-6">
-                    <TabsList className="grid w-full grid-cols-3 bg-[#242424] p-1">
+                    <TabsList className="grid w-full grid-cols-3 bg-black/40 p-1.5 rounded-xl border border-white/5">
                         <TabsTrigger
                             value="text"
-                            className="gap-2 data-[state=active]:bg-[#7c3aed]/20 data-[state=active]:text-[#c4b5fd] transition-all"
+                            className="gap-2 rounded-lg data-[state=active]:bg-primary/20 data-[state=active]:text-primary data-[state=active]:shadow-lg transition-all duration-300"
                         >
                             <Type className="size-4" />
                             Texto

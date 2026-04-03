@@ -27,17 +27,17 @@ function relativeTime(dateStr: string): string {
 
 // Cores das categorias por padrão
 const categoryColors: Record<string, string> = {
-    Projetos: "bg-blue-500/15 text-blue-400 border-blue-500/20",
-    Aprendizagem: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
-    Saúde: "bg-rose-500/15 text-rose-400 border-rose-500/20",
-    Finanças: "bg-amber-500/15 text-amber-400 border-amber-500/20",
-    Criatividade: "bg-violet-500/15 text-violet-400 border-violet-500/20",
-    Pessoal: "bg-cyan-500/15 text-cyan-400 border-cyan-500/20",
-    Trabalho: "bg-orange-500/15 text-orange-400 border-orange-500/20",
+    Projetos: "bg-blue-500/10 text-blue-400 border-blue-500/20 shadow-[0_0_10px_rgba(59,130,246,0.1)]",
+    Aprendizagem: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]",
+    Saúde: "bg-rose-500/10 text-rose-400 border-rose-500/20 shadow-[0_0_10px_rgba(244,63,113,0.1)]",
+    Finanças: "bg-amber-500/10 text-amber-400 border-amber-500/20 shadow-[0_0_10px_rgba(245,158,11,0.1)]",
+    Criatividade: "bg-violet-500/10 text-violet-400 border-violet-500/20 shadow-[0_0_10px_rgba(139,92,246,0.1)]",
+    Pessoal: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]",
+    Trabalho: "bg-orange-500/10 text-orange-400 border-orange-500/20 shadow-[0_0_10px_rgba(249,115,22,0.1)]",
 };
 
 const defaultCategoryColor =
-    "bg-[#7c3aed]/15 text-[#c4b5fd] border-[#7c3aed]/20";
+    "bg-primary/10 text-primary border-primary/20 shadow-[0_0_10px_rgba(124,58,237,0.1)]";
 
 export function IdeaCard({ idea }: { idea: Idea }) {
     // Truncar conteúdo para preview
@@ -48,9 +48,12 @@ export function IdeaCard({ idea }: { idea: Idea }) {
 
     return (
         <Link href={`/idea/${idea.id}`} className="group block">
-            <article className="rounded-xl border border-border/30 bg-[#1a1a1a]/80 p-5 transition-all duration-200 hover:border-[#7c3aed]/30 hover:bg-[#1a1a1a] hover:shadow-lg hover:shadow-[#7c3aed]/5">
+            <article className="relative rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary p-5">
+                {/* Decoration gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+                
                 {/* Conteúdo */}
-                <p className="text-[#f5f5f5] leading-relaxed whitespace-pre-wrap">
+                <p className="text-foreground leading-relaxed whitespace-pre-wrap relative z-10">
                     {preview}
                 </p>
 
@@ -70,7 +73,7 @@ export function IdeaCard({ idea }: { idea: Idea }) {
                             <Badge
                                 key={tag}
                                 variant="outline"
-                                className="border-border/30 bg-[#242424] text-[10px] text-[#a1a1aa]"
+                                className="border-border/30 bg-muted/50 text-[10px] text-muted-foreground backdrop-blur-sm"
                             >
                                 #{tag}
                             </Badge>
@@ -79,12 +82,14 @@ export function IdeaCard({ idea }: { idea: Idea }) {
                 )}
 
                 {/* Footer: data + seta */}
-                <div className="mt-4 flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-xs text-[#a1a1aa]/60">
-                        <Clock className="size-3" />
+                <div className="mt-4 flex items-center justify-between relative z-10 border-t border-border/30 pt-3">
+                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground/80 font-medium">
+                        <Clock className="size-3.5 text-primary/70" />
                         {relativeTime(idea.created_at)}
                     </span>
-                    <ArrowRight className="size-4 text-[#a1a1aa]/30 transition-all group-hover:translate-x-0.5 group-hover:text-[#7c3aed]" />
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/0 transition-colors duration-300 group-hover:bg-primary/10">
+                        <ArrowRight className="size-4 text-muted-foreground/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-primary drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
+                    </div>
                 </div>
             </article>
         </Link>
