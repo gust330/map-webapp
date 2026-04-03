@@ -12,16 +12,16 @@ export async function updateSession(request: NextRequest) {
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet, headers) {
+        setAll(cookiesToSet) {
+          // Atualizar cookies no request (para server components downstream)
+          cookiesToSet.forEach(({ name, value }) => {
+            request.cookies.set(name, value);
+          });
+          // Recriar a response com os cookies atualizados
           supabaseResponse = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) => {
             supabaseResponse.cookies.set(name, value, options);
           });
-          if (headers) {
-            Object.entries(headers).forEach(([key, value]) => {
-              supabaseResponse.headers.set(key, value);
-            });
-          }
         },
       },
     },
@@ -31,3 +31,4 @@ export async function updateSession(request: NextRequest) {
 
   return supabaseResponse;
 }
+
