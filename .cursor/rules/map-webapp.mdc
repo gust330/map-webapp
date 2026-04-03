@@ -1,0 +1,13 @@
+---
+description: Convenções do projeto MAP (Mind Assistant Protocol) web app
+alwaysApply: true
+---
+
+# MAP Web App
+
+- Stack: Next.js (App Router), TypeScript strict, Tailwind v4, shadcn/ui, Supabase, OpenAI (server-only).
+- Comentários em português; identificadores de código em inglês.
+- Preferir Server Components; marcar com `'use client'` só quando necessário.
+- Chaves `OPENAI_API_KEY` e `SUPABASE_SERVICE_ROLE_KEY` apenas em API routes / server.
+- Validar inputs de API com Zod; estado de UI partilhado com Zustand quando fizer sentido.
+- Consultar `CLAUDE.md` na raiz do projeto e o PRD (secção 5) para o schema da base de dados.
